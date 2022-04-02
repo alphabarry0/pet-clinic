@@ -2,6 +2,8 @@ package com.example.petclinic.services;
 
 import com.example.petclinic.model.Owner;
 
+import java.util.Optional;
+
 public interface OwnerService extends CRUDService<Owner, Long> {
-    Owner findByLastname(String lastname);
+    Optional<Owner> findByLastname(String lastname);
 }
