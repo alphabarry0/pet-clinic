@@ -2,11 +2,13 @@ package com.example.petclinic.services.map;
 
 import com.example.petclinic.model.Owner;
 import com.example.petclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
@@ -35,9 +37,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Optional<Owner> findByLastname(String lastname) {
-        return map.entrySet().stream()
-                .filter(entry -> entry.getValue().getLastName().equals(lastname))
-                .map(Map.Entry::getValue)
+        return map.values().stream()
+                .filter(owner -> owner.getLastName().equals(lastname))
                 .findFirst();
     }
 }
